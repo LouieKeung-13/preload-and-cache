@@ -144,3 +144,4 @@ MIT
 ---
 
 *Compiled by LouieKeung · 2026*
+For more detailed information, please send an email to: markdlouis1995@gmail.com
