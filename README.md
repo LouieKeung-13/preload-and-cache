@@ -137,11 +137,38 @@ preload-and-cache/
 
 ---
 
+## 🔗 Related Projects
+
+### Dynamic Token Compression — Real-Time Data Pipeline
+
+Preload & Cache and Dynamic Token Compression complement each other as two halves of a single context-management strategy:
+
+| Aspect | Preload & Cache | Dynamic Token Compression |
+|--------|----------------|--------------------------|
+| **Data type** | Static, long-form documents | Live, dynamic search results |
+| **Use case** | Repeated queries on the same report | One-off queries on fresh data |
+| **Core technique** | Context caching + injection | Structured compression + ratio optimization |
+| **Best for** | 5+ queries on one document | Single query on scraped data |
+| **Reference** | This document | [../dynamic-token-compression/](../dynamic-token-compression/) |
+
+**Together they form a complete pipeline:**
+
+```
+Live Data → Dynamic Token Compression → Compressed Result
+                                              ↓
+                                    If reused repeatedly → Preload & Cache
+```
+
+See the https://github.com/LouieKeung-13/dynamic-token-compression/blob/main/README.md for compression ratios, strategy benchmarks, and decision rules.
+
+---
+
 ## 📄 License
 
 MIT
 
 ---
+
 
 *Compiled by LouieKeung · 2026 · Dynamic Token Compression Project*
 
