@@ -1,8 +1,11 @@
 # Preload & Cache: A Context Reuse Pattern for Long-Form Knowledge Injection
 
 > **Chinese title:** 静态长文本注入 · 上下文缓存复用方案
+> 
 > **Formerly known as:** PoorGuy's Excuse
+> 
 > **Test platform:** OpenClaw Gateway · **Test date:** 2026-07-06
+> 
 > **Last updated:** 2026-07-07
 
 ---
