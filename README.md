@@ -1,9 +1,12 @@
 # Preload & Cache: A Context Reuse Pattern for Long-Form Knowledge Injection
 
-> **Chinese title:** 静态长文本注入 · 上下文缓存复用方案
-> **Formerly known as:** PoorGuy's Excuse
-> **Test platform:** OpenClaw Gateway · **Test date:** 2026-07-06
-> **Last updated:** 2026-07-07
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+<p align="center">
+  <a href="README_zh-CN.md">
+    🇨🇳 中文版
+  </a>
+</p>
 
 ---
 
@@ -35,7 +38,7 @@ A specialized pattern for injecting pre-prepared research reports, knowledge doc
 | 🌐 Real-time data collection | Requires dynamic retrieval; cached context cannot reflect new content |
 | 💬 Casual chat | Injection cost far outweighs single-turn dialogue benefit |
 | 🔄 Frequent document switching | Each switch requires re-injection, wasting cache |
-| 🔍 Web search + summarization | This is a different technical stack \(e.g., MCP + real-time compression\) |
+| 🔍 Web search + summarization | This is a different technical stack (e.g., MCP + real-time compression) |
 
 ---
 
@@ -77,18 +80,18 @@ The data below reflects the observed cache behavior in this specific session and
 
 ---
 
-## 📊 Observed Results \(Reference Only\)
+## 📊 Observed Results (Reference Only)
 
 | Model | Cache Hit Rate | Context Usage | Rounds | New Writes | Session Isolation |
 | --- | --- | --- | --- | --- | --- |
-| **DeepSeek V4 Flash** | **97%** | 56k / 1.0M \(5%\) | 5 | 0 | ❌ Same session |
-| **Agnes 2.0 Flash** | **89%** \(⚠️ residual\) | 65k / 1.0M \(6%\) | 5 | 0 | ❌ Same session |
+| **DeepSeek V4 Flash** | **97%** | 56k / 1.0M (5%) | 5 | 0 | ❌ Same session |
+| **Agnes 2.0 Flash** | **89%** (⚠️ residual) | 65k / 1.0M (6%) | 5 | 0 | ❌ Same session |
 
 **Observations:**
 
 - Both models showed stable context caching with zero compaction across all rounds.
 - New token writes were 0 in both tests, confirming the reuse pattern works.
-- DeepSeek V4 Flash showed a higher hit rate \(97% vs 89%\), though cross-session validation is needed.
+- DeepSeek V4 Flash showed a higher hit rate (97% vs 89%), though cross-session validation is needed.
 
 ---
 
@@ -96,9 +99,9 @@ The data below reflects the observed cache behavior in this specific session and
 
 | Dimension | Details |
 | --- | --- |
-| Injected data | xx pet supplies market research \(3 reports combined, ~56-65k tokens\) |
-| Dialogue rounds | 5 rounds per model \(10 total\) |
-| Framework | Reference comparison \(same session, non-rigorous\) |
+| Injected data | xx pet supplies market research (3 reports combined, ~56-65k tokens) |
+| Dialogue rounds | 5 rounds per model (10 total) |
+| Framework | Reference comparison (same session, non-rigorous) |
 | Tool | OpenClaw Gateway |
 | Injection method | Direct `.md` file read into session context |
 
@@ -108,17 +111,18 @@ The data below reflects the observed cache behavior in this specific session and
 
 ```
 preload-and-cache/
-├── README.md                          \# Project overview + core findings
+├── README.md                          # Project overview + core findings
+├── README_zh-CN.md                    # Chinese version
 ├── data/
-│   ├── injection-content-summary.md   \# Summary of injected content
-│   ├── round1-deepseek-v4-flash.md    \# DeepSeek V4 Flash test log
-│   ├── round2-agnes-flash.md          \# Agnes 2.0 Flash test log
-│   └── ab-test-results.md             \# Final comparison + analysis
+│   ├── injection-content-summary.md   # Summary of injected content
+│   ├── round1-deepseek-v4-flash.md    # DeepSeek V4 Flash test log
+│   ├── round2-agnes-flash.md          # Agnes 2.0 Flash test log
+│   └── ab-test-results.md             # Final comparison + analysis
 ├── docs/
-│   ├── methodology.md                 \# Testing methodology
-│   └── faq.md                         \# Frequently asked questions
+│   ├── methodology.md                 # Testing methodology
+│   └── faq.md                         # Frequently asked questions
 ├── assets/
-│   └── \(screenshots / charts\)
+│   └── (screenshots / charts)
 ├── LICENSE
 └── .gitignore
 ```
@@ -127,7 +131,7 @@ preload-and-cache/
 
 ## 🛠️ Reproduction Steps
 
-1. Prepare a long-form research document \(50KB+, `.md` format\)
+1. Prepare a long-form research document (50KB+, `.md` format)
 2. Read and inject the document into an OpenClaw session context
 3. Execute 3-5 rounds of short follow-up dialogue
 4. Check `session_status` for cache hit rate
@@ -159,7 +163,7 @@ Live Data → Dynamic Token Compression → Compressed Result
                                     If reused repeatedly → Preload & Cache
 ```
 
-See the https://github.com/LouieKeung-13/dynamic-token-compression/blob/main/README.md for compression ratios, strategy benchmarks, and decision rules.
+See the [Dynamic Token Compression README](../dynamic-token-compression/README.md) for compression ratios, strategy benchmarks, and decision rules.
 
 ---
 
@@ -168,7 +172,6 @@ See the https://github.com/LouieKeung-13/dynamic-token-compression/blob/main/REA
 MIT
 
 ---
-
 
 *Compiled by LouieKeung · 2026*
 
